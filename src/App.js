@@ -8,6 +8,7 @@ import OutputImagePicker from "./components/ImagePicker/OutputImagePicker";
 
 // Import Styles
 import "./App.css";
+import { callApi } from "./sdk/fn";
 
 function App() {
   const [task, setTask] = useState("repose");
@@ -17,6 +18,15 @@ function App() {
   const [preview1, setPreview1] = useState(null);
   const [file2, setFile2] = useState(null);
   const [preview2, setPreview2] = useState(null);
+
+  const updateOutputImage = (base64Img) => {
+    setOutput(base64Img);
+  }
+  
+  const clickHandler = (e) => {
+    e.preventDefault();
+    callApi(file1, file2, task, body, updateOutputImage);
+  }
 
   return (
     <div className="flex bg-slate-900 w-full h-screen px-8 py-4">
@@ -70,7 +80,7 @@ function App() {
               <option value={"lower_body"}>Lower Body</option>
             </select>
           </div>
-          <button className="bg-green-600 font-bold py-2 flex justify-center items-center">
+          <button className="bg-green-600 font-bold py-2 flex justify-center items-center" onClick={(e) => { clickHandler(e) }}>
             <AiFillFileImage /> Generate
           </button>
         </div>
