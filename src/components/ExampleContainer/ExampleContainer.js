@@ -93,6 +93,7 @@ const ExampleContainer = ({
     ]);
     setFile1(imageBlob1);
     setFile2(imageBlob2);
+    console.log(options);
     setPreview1(options.input);
     setPreview2(options.target);
     setTask(options.task);
@@ -146,7 +147,7 @@ const ExampleContainer = ({
           <>
             <TextRow text={"upper_body"} onClick={() => setProperties(prop1)} />
             <TextRow
-              text={"lower_body"}
+              text={"upper_body"}
               border={false}
               onClick={() => setProperties(prop2)}
             />
